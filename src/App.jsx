@@ -2,10 +2,12 @@ import Sidebar from './components/Sidebar'
 import Player from './components/Player'
 import Display from './components/Display'
 import {PlayerContext} from './context/PlayerContext'
+import { useContext } from 'react'
+
 
 
 function App() {
-const {audioRef} = useContext(PlayerContext)
+const {audioRef ,track} = useContext(PlayerContext)
 
 
 
@@ -17,7 +19,7 @@ const {audioRef} = useContext(PlayerContext)
           <Display/>
              </div>
             <Player />
-            <audio ref={{audioRef}} preload='auto'></audio>
+            <audio ref={audioRef} src ={track.file} preload='auto'></audio>
         </div>
     </>
   )
