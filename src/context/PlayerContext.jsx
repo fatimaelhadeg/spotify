@@ -37,6 +37,31 @@ audioRef.current.play();
 setPlayStatus(true);
 
   }
+  const previous = () => {
+    if (track.id > 0) {
+      setTrack(songsData[track.id - 1]);
+      setTimeout(() => {
+        audioRef.current.play();
+      }, 100);
+      setPlayStatus(true);
+    }
+  };
+
+  const next = () => {
+    if (track.id < songsData.length - 1) {
+      setTrack(songsData[track.id + 1]);
+      setTimeout(() => {
+        audioRef.current.play();
+      }, 100);
+      setPlayStatus(true);
+    }
+  };
+  const seekSong = async(e)=>{
+audioRef.current.currentTime = ((e.nativeEvent.offsetX / seekBg.current.offsetWidth)*audioRef.current.duration)
+
+
+
+  }
 
  useEffect(() => {
   setTimeout(() => {
@@ -72,6 +97,8 @@ setPlayStatus(true);
     play,
     pause,
     playWithid,
+    previous,next,
+    seekSong
   };
 
   return (
